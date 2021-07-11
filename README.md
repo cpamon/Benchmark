@@ -42,5 +42,16 @@ ab -k -n1000 -c100 -H 'Accept-Encoding: gzip,deflate' https://www.nginx.com/
 | Total transfered    | 26666840 bytes |
 | Transfer rate    | 755.90 Kbytes/s |
 
+![Graph 2](https://github.com/cpamon/Benchmark/blob/main/resultados-1000-10.png)
 
+
+| Requests | 1000 |
+| ------ | ----------- |
+| Concurrency Level   | 100 |
+| Time taken for tests | 17.543 seconds |
+| Requests per Second    | 57.00 |
+| Total transfered    | 26663158 bytes |
+| Transfer rate    | 1484.23 Kbytes/s |
+
+![Graph 3](https://github.com/cpamon/Benchmark/blob/main/resultados-1000-100.png)
 
