@@ -22,4 +22,22 @@ ab -k -n1000 -c100 -H 'Accept-Encoding: gzip,deflate' https://www.nginx.com/
 ```
 
 ### Test 1
-#### 1000 requests & 0 concurrents
+
+| Requests | 1000 |
+| ------ | ----------- |
+| Concurrency Level   | 1 |
+| Time taken for tests | 425.893 seconds |
+| Requests per Second    | 2.35 |
+| Total transfered    | 24403021 bytes |
+| Transfer rate    | 55.96 Kbytes/s |
+
+
+
+| Requests | 1000 |
+| ------ | ----------- |
+| Concurrency Level   | 1 |
+| Time taken for tests | 425.893 seconds |
+| Requests per Second    | 2.35 |
+| Total transfered    | 24403021 bytes |
+| Transfer rate    | 55.96 Kbytes/s |
+
