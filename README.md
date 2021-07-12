@@ -21,6 +21,8 @@ So, for example, if I want to test the web server with 1000 requests and a concu
 ab -k -n1000 -c100 -H 'Accept-Encoding: gzip,deflate' https://www.nginx.com/
 ```
 
+___
+
 ### Test 1
 
 | Requests | 1000 |
@@ -31,8 +33,17 @@ ab -k -n1000 -c100 -H 'Accept-Encoding: gzip,deflate' https://www.nginx.com/
 | Total transfered    | 24403021 bytes |
 | Transfer rate    | 55.96 Kbytes/s |
 
+As expected, with such a low level of concurrency it takes a huge amount of time (425 seconds) to complete the 1000 requests since every request has to be performed once at a time.
+
+
 ![Graph 1](https://github.com/cpamon/Benchmark/blob/main/resultados-1000-0.png)
 
+The graph shows that the latency remains a bit over 200ms until 400 requests. From there it starts to increase almost constantly until the 900th request from which the growth becomes exponential reaching 2000ms at the 1000th request.
+
+
+___
+
+### Test 2
 
 | Requests | 1000 |
 | ------ | ----------- |
@@ -42,16 +53,21 @@ ab -k -n1000 -c100 -H 'Accept-Encoding: gzip,deflate' https://www.nginx.com/
 | Total transfered    | 26666840 bytes |
 | Transfer rate    | 755.90 Kbytes/s |
 
+With just a concurrency level of 10 the time taken to complete the 1000 requests is 12,36 times faster than with just 1 concurrency. The transfer rate has also been increased 13.5 times which is a similar value as the time improvement.
+
 ![Graph 2](https://github.com/cpamon/Benchmark/blob/main/resultados-1000-10.png)
 
+This time the latency behaviour is a bit different. On the first 100 requests we see a logarithmic growth that rapidly raises the latency over 250ms at the 100th request. From there, there's a constant growth that ends at the 900th request with a latency of 450ms to begin the exponential growth just like in the previous test with the difference that now the 1000th request tops at a bit over 550ms.
+
+Although the latency at the high end values of requests is subtantially lower than in the previous test, I don't see a significant diference in time in the first 800 or 900 requests.
 
 | Requests | 1000 |
 | ------ | ----------- |
 | Concurrency Level   | 100 |
-| Time taken for tests | 17.543 seconds |
-| Requests per Second    | 57.00 |
-| Total transfered    | 26663158 bytes |
-| Transfer rate    | 1484.23 Kbytes/s |
+| Time taken for tests | 10.991 seconds |
+| Requests per Second    | 90.98 |
+| Total transfered    | 26632450 bytes |
+| Transfer rate    | 2366.36 Kbytes/s |
 
 ![Graph 3](https://github.com/cpamon/Benchmark/blob/main/resultados-1000-100.png)
 
