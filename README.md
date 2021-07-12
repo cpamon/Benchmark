@@ -61,6 +61,10 @@ This time the latency behaviour is a bit different. On the first 100 requests we
 
 Although the latency at the high end values of requests is subtantially lower than in the previous test, I don't see a significant diference in time in the first 800 or 900 requests.
 
+___
+
+### Test 3
+
 | Requests | 1000 |
 | ------ | ----------- |
 | Concurrency Level   | 100 |
@@ -68,6 +72,11 @@ Although the latency at the high end values of requests is subtantially lower th
 | Requests per Second    | 90.98 |
 | Total transfered    | 26632450 bytes |
 | Transfer rate    | 2366.36 Kbytes/s |
+
+In this third test where the concurrency level is 100 we have a great improve in time as well as in the Transfer rate.
+The total time to complete the 1000 requests is 3.13 times faster than in Test 2 and the transfer rate is 3.13 times higher than in the previous test.
+
+We can conclude that as we increase the concurrency level we optimise the time taken to perform the whole requests and by doing so we also increase the transfer rate since there are more simultaneous connections.
 
 ![Graph 3](https://github.com/cpamon/Benchmark/blob/main/resultados-1000-100.png)
 
