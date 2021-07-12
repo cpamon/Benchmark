@@ -80,3 +80,7 @@ We can conclude that as we increase the concurrency level we optimise the time t
 
 ![Graph 3](https://github.com/cpamon/Benchmark/blob/main/resultados-1000-100.png)
 
+All those optimizations commented before seem to not translate into the latency times. Now the times start at a bit under 500ms and mantain a constant growth until the 900th request which takes aproximately 1350ms. Although, we have a common behaviour with the previous tests as when reaching the 900th requests the next 100 produce an exponential growth in latency. We could deduce that there's a threshold value at 900 requests.
+
+The fact that we now have 100 concurrent connections to the web service is making the latency increase, presumably because the web service takes more time to answer to 100 requests at a time than the 10 that we tried in Test 2.
+
